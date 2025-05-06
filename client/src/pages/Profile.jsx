@@ -100,24 +100,24 @@ const Profile = () => {
 
   if (loading) return <Loading />;
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-white via-violet-50 to-violet-100 flex items-stretch justify-center animate-fade-in">
-      <Card className="w-full max-w-2xl flex flex-col flex-1 justify-center shadow-2xl border-0 rounded-3xl overflow-hidden m-0">
+    <div className="min-h-screen w-full bg-background flex items-stretch justify-center animate-fade-in px-2 sm:px-4">
+      <Card className="w-full max-w-2xl flex flex-col flex-1 justify-center shadow-2xl border border-border rounded-3xl overflow-hidden m-0 bg-card text-card-foreground">
         {/* Profile Banner */}
-        <div className="relative h-40 bg-gradient-to-r from-[#4F46E5] to-[#6366f1]">
+        <div className="relative h-32 sm:h-40 bg-primary">
           {/* Avatar Overlapping Banner */}
-          <div className="absolute left-1/2 -bottom-16 transform -translate-x-1/2">
+          <div className="absolute left-1/2 -bottom-14 sm:-bottom-16 transform -translate-x-1/2">
             <Dropzone
               onDrop={(acceptedFiles) => handleFileSelection(acceptedFiles)}
             >
               {({ getRootProps, getInputProps }) => (
                 <div {...getRootProps()} className="cursor-pointer group">
                   <input {...getInputProps()} />
-                  <Avatar className="w-32 h-32 ring-4 ring-white shadow-lg relative group bg-white">
+                  <Avatar className="w-20 h-20 sm:w-32 sm:h-32 ring-4 ring-accent shadow-lg relative group bg-card">
                     <AvatarImage
                       src={filePreview ? filePreview : userData?.user?.avatar}
                     />
                     <div className="absolute z-50 w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center bg-black bg-opacity-20 border-2 border-violet-500 rounded-full group-hover:flex hidden">
-                      <IoCameraOutline color="#7c3aed" size={32} />
+                      <IoCameraOutline color="#7c3aed" size={24} />
                     </div>
                   </Avatar>
                 </div>
@@ -125,19 +125,19 @@ const Profile = () => {
             </Dropzone>
           </div>
         </div>
-        <CardContent className="pt-24 pb-10 px-8 flex flex-col items-center flex-1 justify-center">
+        <CardContent className="pt-20 sm:pt-24 pb-8 sm:pb-10 px-4 sm:px-8 flex flex-col items-center flex-1 justify-center w-full">
           {/* Friendly Greeting */}
-          <h2 className="text-2xl font-bold text-gray-800 mb-1">
+          <h2 className="text-xl sm:text-2xl font-bold text-card-foreground mb-1 text-center">
             Hello, {userData?.user?.name || "User"}!
           </h2>
-          <p className="text-gray-500 mb-6">
+          <p className="text-muted-foreground mb-6 text-center text-sm sm:text-base">
             Manage your account information below.
           </p>
           {/* Form Section */}
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="w-full max-w-md mx-auto space-y-6"
+              className="w-full max-w-xs sm:max-w-md mx-auto space-y-5 sm:space-y-6"
             >
               <FormField
                 control={form.control}
@@ -147,7 +147,7 @@ const Profile = () => {
                     <FormLabel>Name</FormLabel>
                     <FormControl>
                       <Input
-                        className="rounded-lg border-violet-200 focus:border-violet-400 focus:ring-violet-400"
+                        className="rounded-lg border-border bg-background text-foreground focus:border-accent focus:ring-accent"
                         placeholder="Enter your name"
                         {...field}
                       />
@@ -164,7 +164,7 @@ const Profile = () => {
                     <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input
-                        className="rounded-lg border-violet-200 focus:border-violet-400 focus:ring-violet-400"
+                        className="rounded-lg border-border bg-background text-foreground focus:border-accent focus:ring-accent"
                         placeholder="Enter your email address"
                         {...field}
                       />
@@ -181,7 +181,7 @@ const Profile = () => {
                     <FormLabel>Bio</FormLabel>
                     <FormControl>
                       <Textarea
-                        className="rounded-lg border-violet-200 focus:border-violet-400 focus:ring-violet-400"
+                        className="rounded-lg border-border bg-background text-foreground focus:border-accent focus:ring-accent"
                         placeholder="Enter bio"
                         {...field}
                       />
@@ -198,7 +198,7 @@ const Profile = () => {
                     <FormLabel>Password</FormLabel>
                     <FormControl>
                       <Input
-                        className="rounded-lg border-violet-200 focus:border-violet-400 focus:ring-violet-400"
+                        className="rounded-lg border-border bg-background text-foreground focus:border-accent focus:ring-accent"
                         type="password"
                         placeholder="Enter your password"
                         {...field}
@@ -210,7 +210,7 @@ const Profile = () => {
               />
               <Button
                 type="submit"
-                className="w-full rounded-lg bg-[#4F46E5] hover:bg-[#4338ca] text-white font-semibold py-2 transition-all shadow-md"
+                className="w-full rounded-lg bg-accent hover:bg-primary text-white font-semibold py-2 transition-all shadow-md"
               >
                 Save Changes
               </Button>

@@ -39,7 +39,7 @@ const AppSidebar = () => {
 
   return (
     <Sidebar>
-      <SidebarHeader className="bg-white rounded-t-2xl shadow-md">
+      <SidebarHeader className="bg-[#23263a] shadow-md border-b border-border">
         <svg
           width="40"
           height="40"
@@ -47,16 +47,16 @@ const AppSidebar = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle cx="32" cy="32" r="32" fill="#4F46E5" />
+          <circle cx="32" cy="32" r="32" fill="#001935" />
           <rect x="18" y="18" width="28" height="28" rx="8" fill="#fff" />
-          <circle cx="32" cy="32" r="8" fill="#4F46E5" />
+          <circle cx="32" cy="32" r="8" fill="#FF61A6" />
         </svg>
       </SidebarHeader>
-      <SidebarContent className="bg-white/70 backdrop-blur-lg rounded-b-2xl shadow-xl border border-violet-100">
+      <SidebarContent className="bg-[#23263a] text-[#f4f6fb] shadow-xl border border-border">
         <SidebarGroup>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton className="hover:bg-violet-50 transition-colors rounded-lg px-3 py-2 flex items-center gap-2">
+              <SidebarMenuButton className="hover:bg-accent/20 transition-colors px-3 py-2 flex items-center gap-2 text-[#f4f6fb]">
                 <IoHomeOutline className="text-[#4F46E5]" />
                 <Link
                   to={RouteIndex}
@@ -70,7 +70,7 @@ const AppSidebar = () => {
             {user && user.isLoggedIn ? (
               <>
                 <SidebarMenuItem>
-                  <SidebarMenuButton className="hover:bg-violet-50 transition-colors rounded-lg px-3 py-2 flex items-center gap-2">
+                  <SidebarMenuButton className="hover:bg-accent/20 transition-colors px-3 py-2 flex items-center gap-2 text-[#f4f6fb]">
                     <GrBlog className="text-[#4F46E5]" />
                     <Link
                       to={RouteBlog}
@@ -81,7 +81,7 @@ const AppSidebar = () => {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton className="hover:bg-violet-50 transition-colors rounded-lg px-3 py-2 flex items-center gap-2">
+                  <SidebarMenuButton className="hover:bg-accent/20 transition-colors px-3 py-2 flex items-center gap-2 text-[#f4f6fb]">
                     <FaRegComments className="text-[#4F46E5]" />
                     <Link
                       to={RouteCommentDetails}
@@ -98,7 +98,7 @@ const AppSidebar = () => {
             {user && user.isLoggedIn && user.user.role === "admin" ? (
               <>
                 <SidebarMenuItem>
-                  <SidebarMenuButton className="hover:bg-violet-50 transition-colors rounded-lg px-3 py-2 flex items-center gap-2">
+                  <SidebarMenuButton className="hover:bg-accent/20 transition-colors px-3 py-2 flex items-center gap-2 text-[#f4f6fb]">
                     <BiCategoryAlt className="text-[#4F46E5]" />
                     <Link
                       to={RouteCategoryDetails}
@@ -110,7 +110,7 @@ const AppSidebar = () => {
                 </SidebarMenuItem>
 
                 <SidebarMenuItem>
-                  <SidebarMenuButton className="hover:bg-violet-50 transition-colors rounded-lg px-3 py-2 flex items-center gap-2">
+                  <SidebarMenuButton className="hover:bg-violet-50 transition-colors px-3 py-2 flex items-center gap-2">
                     <LuUsers className="text-[#4F46E5]" />
                     <Link
                       to={RouteUser}
@@ -128,7 +128,7 @@ const AppSidebar = () => {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel className="text-xs font-bold text-[#4F46E5] uppercase tracking-widest mt-4 mb-2">
+          <SidebarGroupLabel className="text-xs font-bold text-[#f4f6fb] uppercase tracking-widest mt-4 mb-2">
             Categories
           </SidebarGroupLabel>
           <SidebarMenu>
@@ -136,11 +136,11 @@ const AppSidebar = () => {
               categoryData.category.length > 0 &&
               categoryData.category.map((category) => (
                 <SidebarMenuItem key={category._id}>
-                  <SidebarMenuButton className="hover:bg-violet-50 transition-colors rounded-lg px-3 py-2 flex items-center gap-2">
+                  <SidebarMenuButton className="hover:bg-violet-50 transition-colors px-3 py-2 flex items-center gap-2">
                     <GoDot className="text-[#4F46E5]" />
                     <Link
                       to={RouteBlogByCategory(category.slug)}
-                      className="font-medium text-gray-600 hover:text-[#4F46E5]"
+                      className="font-medium text-[#f4f6fb] hover:text-accent"
                     >
                       {category.name}
                     </Link>

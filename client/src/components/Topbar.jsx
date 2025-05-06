@@ -64,7 +64,7 @@ const Topbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center h-16 fixed w-full z-30 bg-white/80 backdrop-blur-lg px-8 border-b border-violet-100 shadow-md rounded-b-2xl">
+    <div className="flex justify-between items-center h-16 fixed w-full z-30 bg-[#23263a] text-[#f4f6fb] px-8 border-b border-border shadow-md rounded-b-2xl">
       <div className="flex justify-center items-center gap-2">
         <button onClick={toggleSidebar} className="md:hidden" type="button">
           <AiOutlineMenu />
