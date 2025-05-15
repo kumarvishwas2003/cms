@@ -59,7 +59,6 @@ import {
   Title,
   TodoList,
   Underline,
-  WordCount,
 } from "ckeditor5";
 
 import "ckeditor5/ckeditor5.css";
@@ -178,7 +177,6 @@ export default function Editor({ props }) {
           Title,
           TodoList,
           Underline,
-          WordCount,
         ],
         balloonToolbar: [
           "bold",
@@ -302,6 +300,27 @@ export default function Editor({ props }) {
             "tableCellProperties",
           ],
         },
+        fontColor: {
+          colors: [
+            {
+              color: "#000000",
+              label: "Black",
+              hasBorder: false,
+            },
+          ],
+        },
+        uiColor: "#ffffff",
+        extraPlugins: [
+          function (editor) {
+            editor.editing.view.change((writer) => {
+              writer.setStyle(
+                "color",
+                "#000000",
+                editor.editing.view.document.getRoot()
+              );
+            });
+          },
+        ],
       },
     };
   }, [isLayoutReady]);
@@ -317,27 +336,12 @@ export default function Editor({ props }) {
             {editorConfig && (
               <CKEditor
                 onChange={props.onChange}
-                onReady={(editor) => {
-                  const wordCount = editor.plugins.get("WordCount");
-                  editorWordCountRef.current.appendChild(
-                    wordCount.wordCountContainer
-                  );
-                }}
-                onAfterDestroy={() => {
-                  Array.from(editorWordCountRef.current.children).forEach(
-                    (child) => child.remove()
-                  );
-                }}
                 editor={ClassicEditor}
                 config={editorConfig}
               />
             )}
           </div>
         </div>
-        <div
-          className="editor_container__word-count"
-          ref={editorWordCountRef}
-        ></div>
       </div>
     </div>
   );

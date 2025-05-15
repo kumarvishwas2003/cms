@@ -17,14 +17,14 @@ const BlogCard = ({ props }) => {
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
               <Avatar className="w-12 h-12 ring-2 ring-accent/40">
-                <AvatarImage src={props.author.avatar || usericon} />
+                <AvatarImage src={props.author?.avatar || usericon} />
               </Avatar>
               <div className="flex flex-col">
                 <span className="font-semibold text-gray-800 text-base">
-                  {props.author.name}
+                  {props.author?.name || "Unknown"}
                 </span>
                 <span className="text-xs text-muted-foreground">
-                  {props.author.role === "admin" ? "Admin" : "User"}
+                  {props.author?.role === "admin" ? "Admin" : "User"}
                 </span>
               </div>
             </div>
